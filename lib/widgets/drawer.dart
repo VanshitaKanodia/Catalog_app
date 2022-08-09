@@ -7,7 +7,6 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final imageUrl = "https://www.clipartkey.com/mpngs/m/146-1461473_default-profile-picture-transparent.png";
 
     return Drawer(
       child: Container(
@@ -21,7 +20,7 @@ class MyDrawer extends StatelessWidget {
                   accountEmail: Text("VkDev@gmail.com"),
                   margin: EdgeInsets.zero,
                   currentAccountPicture: CircleAvatar(
-                    backgroundImage: NetworkImage(imageUrl),
+                    backgroundImage: AssetImage('images/146-1461473_default-profile-picture-transparent.png'),
                   ),
                 ),
             ),
