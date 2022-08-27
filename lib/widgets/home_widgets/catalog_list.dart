@@ -2,13 +2,13 @@ import 'package:commercial_app/pages/home_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:commercial_app/models/catalog.dart';
+import 'add_to_cart.dart';
 import 'catalog_image.dart';
 
 
 
-
-
 class CatalogList extends StatelessWidget {
+  const CatalogList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,8 @@ class CatalogList extends StatelessWidget {
 
 class CatalogItem extends StatelessWidget {
   final Item catalog;
-  CatalogItem({required this.catalog}): assert(catalog != null);
+
+  const CatalogItem({Key? key, required this.catalog}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,12 @@ class CatalogItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                catalog.name.text.lg.color(Theme.of(context).accentColor).bold.make(),
+                catalog.name.text.lg
+                    .color(Theme
+                    .of(context)
+                    .accentColor)
+                    .bold
+                    .make(),
                 catalog.desc.text.textStyle(context.captionStyle).make(),
                 10.heightBox,
                 ButtonBar(
@@ -54,21 +60,20 @@ class CatalogItem extends StatelessWidget {
                   buttonPadding: EdgeInsets.zero,
                   children: [
                     '\$${catalog.price}'.text.bold.xl.make(),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Theme.of(context).buttonColor),
-                          shape: MaterialStateProperty.all(StadiumBorder())
-                      ),
-                      onPressed: (){},
-                      child: 'Add to cart'.text.make(),
-                    )
+                    AddToCart(catalog: catalog),
                   ],
                 ).pOnly(right: 8.0)
               ],
             ))
           ],
         )
-    ).color(context.cardColor).rounded.square(150).make().p16();
+    )
+        .color(context.cardColor)
+        .rounded
+        .square(150)
+        .make()
+        .p16();
   }
 }
+
 

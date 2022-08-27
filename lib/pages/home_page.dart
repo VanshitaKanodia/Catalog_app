@@ -12,13 +12,15 @@ import '../widgets/home_widgets/catalog_list.dart';
 
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 
-final int days = 30;
-final String name = 'Vanshita';
+const int days = 30;
+const String name = 'Vanshita';
 
 class _HomePageState extends State<HomePage> {
 
@@ -32,9 +34,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    await Future.delayed(Duration(seconds: 1));
-    final catelogJson = await rootBundle.loadString('files/catelog.json');
-    final decodedData = jsonDecode(catelogJson);
+    await Future.delayed(const Duration(seconds: 1));
+    final catalogJson = await rootBundle.loadString('files/catelog.json');
+    final decodedData = jsonDecode(catalogJson);
     var productData = decodedData["products"];
     CatalogModel.items =
         List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
@@ -47,11 +49,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).cardColor,
+      backgroundColor: context.canvasColor,
       floatingActionButton: FloatingActionButton(
         onPressed: ()=> Navigator.pushNamed(context, MyRoutes.cartRoute),
-        backgroundColor: Theme.of(context).buttonColor,
-        child: Icon(CupertinoIcons.cart,
+        backgroundColor: context.theme.buttonColor,
+        child: const Icon(CupertinoIcons.cart,
         color: Colors.white,
         ),
       ),
@@ -67,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                 //We just expand a widget by writing expand only
                CatalogList().py16().expand()
               else
-                CircularProgressIndicator().centered().expand(),
+                const CircularProgressIndicator().centered().expand(),
             ],
           ),
         ),

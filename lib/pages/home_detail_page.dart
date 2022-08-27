@@ -1,6 +1,6 @@
+import 'package:commercial_app/widgets/home_widgets/add_to_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../models/catalog.dart';
 
 
@@ -18,21 +18,14 @@ class HomeDetailPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
       ),
       backgroundColor: context.canvasColor,
-      bottomNavigationBar:Container(
+      bottomNavigationBar: Container(
         color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
           children: [
             '\$${catalog.price}'.text.bold.xl4.red800.make(),
-            ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(context.theme.buttonColor),
-                  shape: MaterialStateProperty.all(StadiumBorder())
-              ),
-              onPressed: (){},
-              child: 'Add to cart'.text.make(),
-            ).wh(120, 50)
+            AddToCart(catalog: catalog).wh(120, 50)
           ],
         ),
       ),
@@ -57,7 +50,9 @@ class HomeDetailPage extends StatelessWidget {
                           .color(context.accentColor)
                           .bold
                           .make(),
-                        catalog.desc.text.textStyle(context.captionStyle).xl
+                        catalog.desc.text
+                            .textStyle(context.captionStyle)
+                            .xl
                             .make(),
                         10.heightBox,
                         'fbrfn dbainsdj  ifasifnd n doufnkas  isabfiajkfnd f idfbiofnad n dfa;inna j erj v jrbj xcsbdkc kdjcbskje kjsdjbcksjec ckjndjd jdfnkw sdjjfnlsdd sdnflsd lskdnfm aidbfiahdbfnma jahdbfiadb dbfia;qbdh ubfuona abcidbbaiufabjoi IFOUFASND nwdowen dhsojdnf'

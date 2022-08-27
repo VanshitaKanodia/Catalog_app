@@ -1,7 +1,12 @@
 
-
 class CatalogModel {
-  static List<Item> items = [];
+
+  // static final catModel = CatalogModel._internal();
+  // CatalogModel._internal();
+  // factory CatalogModel() => catModel;
+
+
+  static late List<Item> items;
   // = [
   //   Item(
   //   id: 'Codepur001',
@@ -14,20 +19,20 @@ class CatalogModel {
   // ];
 
   //Get item by ID
-  Item getById(int id) => items.firstWhere((element) => element.id == id, orElse: null);
+  // ignore: null_closures
+  Item getById(dynamic id) => items.firstWhere((element) => element.id == id, orElse: null);
 
   //Get item by position
-  Item getByPos(int pos) => items[pos];
-
+  Item getByPosition(int pos) => items[pos];
 }
 
   class Item {
-    late final int id;
-    late final String name;
-    late final String desc;
-    late final num price;
-    late final String color;
-    late final String image;
+    final int id;
+    final String name;
+    final String desc;
+    final num price;
+    final String color;
+    final String image;
 
 
     Item(
@@ -36,7 +41,7 @@ class CatalogModel {
 
 //factory is used as we are calling final functions or it helps in choosing from the list of the items
     factory Item.fromMap(Map<String, dynamic> map){
-     return Item(
+      return Item(
         id: map['id'],
         price: map['price'],
         color: map['color'],
